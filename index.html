@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>picachew</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div onclick="refresh()" class="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></div>
+            <div class="container-header">
+                <h2>computer vs You </h2>
+                 <h3><b id="computer">0</b>:<b id="score">0</b></h3>
+            </div>
+            <div class="choose-header">
+                <h2>Choose:</h2>
+            </div>
+            <div class="container-body">
+                <div class="choose stone" value="1">
+                    <img src="images/rock.png">
+                </div>
+                <div class="choose paper" value="2">
+                    <img src="images/paper.png">
+                </div>
+                <div class="choose scissors" value="3">
+                    <img src="images/scissors.png">
+                </div>
+            </div>
+            <div class="go-btn">
+                <button>PICACHEW</button>
+            </div>
+            <div class="hide">
+                <div class="container-footer">
+                    <div class="computer-choose">
+                        <img class="computer-select" src="">
+                    </div>
+                </div>
+                <p>You choose : <b class="user-choosed"></b></p>
+                <p>Computer choose : <b class="computer-choosed"></b></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var chooseDivs = document.querySelectorAll(".choose");
+    const hide=document.querySelector('.hide');
+    var value;
+    let score=0;
+let computer=0;
+chooseDivs.forEach(function(div) {
+  div.addEventListener("click", function() {
+    hide.classList.add('open');
+    document.querySelector('.refresh').style.display='block';
+    value = Number(this.getAttribute("value"));
+    this.style.backgroundColor="gold";
+    console.log(typeof(value));
+    if(value==1){
+        document.querySelector('.user-choosed').innerHTML='STONE';
+    }else if(value==2){
+        document.querySelector('.user-choosed').innerHTML='PAPER';
+    }else if(value==3){
+        document.querySelector('.user-choosed').innerHTML='SCISSORS';
+    }
+    chooseDivs.forEach(function(otherDiv) {
+      if (otherDiv !== div) {
+        otherDiv.style.backgroundColor =  "rgb(247, 247, 247)";;
+      }
+    });
+    change(1);
+
+  });
+});
+
+var numbers = [1, 2, 3];
+
+
+const btn=document.querySelector('.go-btn');
+btn.addEventListener('click',()=>{
+  
+    change(0);
+    var randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
+    console.log(randomNumber);
+    if(randomNumber==1){
+        document.querySelector('.computer-select').src='images/rock.png';
+        document.querySelector('.computer-choosed').innerHTML='STONE';
+    }else if(randomNumber==2){
+        document.querySelector('.computer-select').src='images/paper.png';
+        document.querySelector('.computer-choosed').innerHTML='PAPER';
+    }else if(randomNumber==3){
+        document.querySelector('.computer-select').src='images/scissors.png';
+        document.querySelector('.computer-choosed').innerHTML='SCISSORS';
+    }
+    if(value==1){
+        if(randomNumber==2){
+            computer++;
+        }
+        else if(randomNumber==3){
+            score++;
+        }
+    }else if(value==2){
+        if(randomNumber==1){
+            score++;
+        }
+        else if(randomNumber==3){
+            computer++;
+        }
+    }else if(value==3){
+        if(randomNumber==1){
+            computer++;
+        }
+        else if(randomNumber==2){
+            score++;
+        }
+    }
+    document.getElementById("score").innerHTML=score;
+    document.getElementById("computer").innerHTML=computer;
+    console.log(score);
+    console.log(computer);
+    
+})
+
+var timeoutId; 
+let wrk=false;
+function change(val) {
+  if(wrk==false){
+    wrk=true;
+    if (val == 1) {
+    var images = [
+      'images/rock.png',
+      'images/paper.png',
+      'images/scissors.png'
+    ];
+    var imageIndex = 0;
+    var imageElement = document.querySelector('.computer-select');
+
+    function changeImage() {
+      imageElement.src = images[imageIndex];
+      imageIndex++;
+      if (imageIndex >= images.length) {
+        imageIndex = 0;
+      }
+      timeoutId = setTimeout(changeImage, 200);
+    }
+
+    changeImage();
+  } 
+  }
+  if(val==0) {
+    wrk=false;
+    clearTimeout(timeoutId);
+    return;
+  }
+}
+
+function refresh(){
+    hide.classList.remove('open');
+    hide.classList.add('close');
+    score=0;
+    value=0;
+    computer=0;
+    document.getElementById("score").innerHTML=score;
+    document.getElementById("computer").innerHTML=computer;
+    document.querySelector('.refresh').style.display='none';
+    chooseDivs.forEach(function(otherDiv) {
+    otherDiv.style.backgroundColor =  "rgb(247, 247, 247)";;
+    })
+}
+
+</script>
+</html>

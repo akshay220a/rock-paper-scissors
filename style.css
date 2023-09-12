@@ -1,0 +1,130 @@
+*{
+    margin:0;
+    padding:0;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.main-container{
+    width:100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gold;
+}
+.container{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px 1px rgb(66, 66, 66);
+}
+.container-body img{
+    object-fit: contain;
+    width: 100px;
+    height: 100px;
+}
+.choose{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(247, 247, 247);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.choose:hover{
+    background-color: rgba(255, 217, 0, 0.678);
+}
+.container-body{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.go-btn button{
+    font-size: 1.4em;
+    margin-top: 10px;
+    padding:3px 25px;
+    border-color: rgb(165, 42, 42);
+    color:rgb(165, 42, 42);
+    border-radius: 5px;
+}
+.go-btn button:hover{
+    color: white;
+    background-color: rgb(165, 42, 42);
+}
+.container-header{
+    text-transform: uppercase;
+    width:100%;
+    text-align: center;
+    font-size: .7em;
+}
+.container-header h3{
+    font-size: 4em;
+    font-weight: 100;
+    margin: 10px;
+}
+.choose-header{
+    width: 100%;
+}
+.container-header h2{
+    justify-content: left;
+    font-size: 2.9em;
+}
+.container-header b{
+padding:0 10px;
+color:brown;
+font-size: 1em;
+}
+.computer-choose{
+    margin: 10px;
+    width:200px;
+    height:200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.computer-choose img,.user-choose img{
+    object-fit: contain;
+    width:150px;
+    height:200px;
+}
+.container-footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.hide{
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+.refresh{
+    display: none;
+    cursor: pointer;   
+    transform: translate(170px,-10px);
+}
+.fa-refresh{
+    position:absolute;
+    font-size: 2.2em;
+    color: white;
+    background-color:rgb(255, 224, 48);
+    border-radius: 50%;
+    padding: 8px;
+    transition-duration: .8s;
+}
+.refresh :hover{
+    transform: rotate(160deg);
+}
+.hide.close{
+    max-height: 0;
+    opacity: 0;
+}
+.hide.open{
+    max-height: 500px;
+    opacity: 1;
+}
