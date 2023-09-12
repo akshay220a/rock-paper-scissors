@@ -20,13 +20,13 @@
             </div>
             <div class="container-body">
                 <div class="choose stone" value="1">
-                    <img src="images/rock.png">
+                    <img src="rock.png">
                 </div>
                 <div class="choose paper" value="2">
-                    <img src="images/paper.png">
+                    <img src="paper.png">
                 </div>
                 <div class="choose scissors" value="3">
-                    <img src="images/scissors.png">
+                    <img src="scissors.png">
                 </div>
             </div>
             <div class="go-btn">
@@ -84,13 +84,13 @@ btn.addEventListener('click',()=>{
     var randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
     console.log(randomNumber);
     if(randomNumber==1){
-        document.querySelector('.computer-select').src='images/rock.png';
+        document.querySelector('.computer-select').src='rock.png';
         document.querySelector('.computer-choosed').innerHTML='STONE';
     }else if(randomNumber==2){
-        document.querySelector('.computer-select').src='images/paper.png';
+        document.querySelector('.computer-select').src='paper.png';
         document.querySelector('.computer-choosed').innerHTML='PAPER';
     }else if(randomNumber==3){
-        document.querySelector('.computer-select').src='images/scissors.png';
+        document.querySelector('.computer-select').src='scissors.png';
         document.querySelector('.computer-choosed').innerHTML='SCISSORS';
     }
     if(value==1){
@@ -129,9 +129,9 @@ function change(val) {
     wrk=true;
     if (val == 1) {
     var images = [
-      'images/rock.png',
-      'images/paper.png',
-      'images/scissors.png'
+      'rock.png',
+      'paper.png',
+      'scissors.png'
     ];
     var imageIndex = 0;
     var imageElement = document.querySelector('.computer-select');
